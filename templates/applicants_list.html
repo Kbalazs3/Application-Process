@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Applicants List</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <h1 class="sub_page_title">Applicants</h1>
+    <br>
+    <hr>
+    <br>
+    <table>
+        <tr>
+            <th class="app_table_Head">Application Code</th>
+            <th class="app_table_Head">Name</th>
+            <th class="app_table_Head">Phone Number</th>
+            <th class="app_table_Head">E-mail</th>
+        </tr>
+        {% for a_i in a_list  %}
+        <tr>
+            <td>
+                <a class="applicants_data" href="/applicants/{{ a_i.application_code }}">{{  a_i.application_code }}</a>
+        </td>
+        <td>
+            <a class="applicants_data" href="/applicants/{{ a_i.application_code }}">{{  a_i.first_name }}  {{ a_i.last_name }}</a>
+        </td>
+        <td>
+            <a class="applicants_data" href="/applicants/{{ a_i.application_code }}">{{  a_i.phone_number }}</a>
+        </td>
+        <td>
+            <a class="applicants_data" href="/applicants/{{ a_i.application_code }}">{{  a_i.email }}</a>
+        </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    <form action="/delete-byemail" method="post">
+        <label class="normal_text" for="email_ending">Delete by email</label>
+        <input class="input_box" type="text" name="email_ending" id="email_ending">
+        <button class="submit_button">Delete applicant</button>
+    </form>
+    <br>
+    <br>
+    <button class="nav_buttons"><a class="links" href="/add-new-applicant">Add new applicant</a></button>
+</body>
+</html>

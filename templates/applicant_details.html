@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Applicant Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+{% for a_i in o_a_data  %}
+
+    <h1 class="sub_page_title">{{  a_i.first_name }} {{ a_i.last_name  }} Applicant's Details</h1>
+    {% endfor %}
+<br>
+    <hr>
+    <br>
+     <table>
+        <tr>
+            <th class="one_app_det_head">Application Code</th>
+            <th class="one_app_det_head">Name</th>
+            <th class="one_app_det_head">Phone Number</th>
+            <th class="one_app_det_head">E-mail</th>
+        </tr>
+        {% for a_i in o_a_data  %}
+        <tr>
+            <td class="applicants_data">
+            {{  a_i.application_code }}
+        </td class="applicants_data">
+        <td>
+            {{  a_i.first_name }}  {{ a_i.last_name }}
+        </td>
+        <td class="applicants_data">
+            {{  a_i.phone_number }}
+        </td>
+        <td class="applicants_data">
+            {{  a_i.email }}
+        </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    <form action="/applicants/{{ code }}" method="post">
+        <input class="input_box" type="text" id="update_phone" name="update_phone">
+        <button class="submit_button">Update</button>
+    </form>
+    <br>
+    <br>
+    <button class="nav_buttons"><a class="links" href="/applicants/{{ code }}/delete">Delete applicant</a></button>
+
+    {#  <form action="/applicants/{{ code }}/delete" >
+        <
+    </form>#}
+</body>
+</html>

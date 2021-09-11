@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Applicant Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <h1 class="sub_page_title">Applicant Search Results</h1>
+    <br>
+    <hr>
+    <br>
+
+    <p class="normal_text">{% for ap in appl_s  %}
+        <br>
+        {{'Applicant: ' + ap.first_name + ' ' + ap.last_name + ' ' + ', Phone Number: ' + ap.phone_number }}
+    {% endfor %}</p>
+</body>
+</html>
